@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Web Development",
+    "category": "Programming"
+  },
+  {
+    "id": 2,
+    "title": "Database Management",
+    "category": "Database"
+  },
+  {
+    "id": 3,
+    "title": "Java Programming",
+    "category": "Programming"
+  },
+  {
+    "id": 4,
+    "title": "Python Basics",
+    "category": "Programming"
+  },
+  {
+    "id": 5,
+    "title": "Data Science",
+    "category": "Analytics"
+  },
+  {
+    "id": 6,
+    "title": "Machine Learning",
+    "category": "AI"
+  },
+  {
+    "id": 7,
+    "title": "Cyber Security",
+    "category": "Security"
+  },
+  {
+    "id": 8,
+    "title": "Cloud Computing",
+    "category": "Cloud"
+  },
+  {
+    "id": 9,
+    "title": "Software Testing",
+    "category": "Testing"
+  },
+  {
+    "id": 10,
+    "title": "Mobile App Development",
+    "category": "Development"
+  }
+]

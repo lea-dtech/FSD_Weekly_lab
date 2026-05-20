@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Course Explorer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body.dark-mode {
+            background-color: #111827;
+            color: white;
+        }
+        #themeBtn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background: #333;
+            color: #fff;
+            /* transition: transform 0.2s, background 0.3s; */
+        }
+        .course-card {
+            cursor: grab;
+        }
+
+        .dragging {
+            opacity: 0.5;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen transition-all duration-300">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Course Explorer</h1>
+
+        <button id="themeBtn"
+            class="bg-white text-blue-600 px-4 py-2 rounded">
+            Dark
+        </button>
+    </nav>
+
+  <!-- Search -->
+    <section class="p-6">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search courses..."
+            class="w-full p-3 border rounded-lg"
+        />
+    </section>
+
+    <!-- Course Container -->
+    <section id="courseContainer"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

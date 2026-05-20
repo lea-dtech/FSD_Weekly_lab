@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Home</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">LMS Portal</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Learn Anytime, Anywhere</h1>
+            <p>Modern online learning platform for students and instructors.</p>
+            <button onclick="openModal()">Get Started</button>
+        </div>
+
+        <!-- SVG -->
+        <svg width="300" height="250" viewBox="0 0 300 250">
+            <circle cx="120" cy="120" r="80" fill="#3b82f6"></circle>
+            <rect x="150" y="80" width="100" height="100" fill="#9333ea"></rect>
+        </svg>
+    </section>
+
+    <!-- Canvas -->
+    <section class="canvas-section">
+        <h2>Student Activity</h2>
+        <canvas id="myCanvas" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Welcome to LMS</h2>
+            <p>Start your learning journey today.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

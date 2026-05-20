@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Registration Form</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Custom CSS Class */
+    .selected-option {
+      background-color: #2563eb;
+      color: white;
+      border-color: #2563eb;
+      transition: 0.3s;
+    }
+    .time-label:has(input:checked) {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+    transition: 0.3s;
+}
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+  <main class="w-full max-w-2xl">
+
+    <!-- Form Section -->
+    <section class="bg-white shadow-lg rounded-xl p-8">
+
+      <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">
+        Course Registration Form
+      </h1>
+
+      <form id="courseForm" class="space-y-5">
+
+        <!-- Full Name -->
+        <div>
+          <label class="block text-lg font-medium mb-2">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Enter your full name"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-lg font-medium mb-2">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+
+        <!-- Domain Specific Field -->
+        <div>
+          <label class="block text-lg font-medium mb-2">
+            Course
+          </label>
+
+          <select
+            id="course"
+            class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            <option value="Web Development">Web Development</option>
+            <option value="Database Management">Database Management</option>
+            <option value="Java Programming">Java Programming</option>
+            <option value="Data Science">Data Science</option>
+          </select>
+        </div>
+
+        <!-- Checkbox Group -->
+        <div>
+          <label class="block text-lg font-medium mb-3">
+            Preferred Study Time
+          </label>
+
+          <div class="flex flex-wrap gap-4">
+
+            <label class="time-label border rounded-lg px-4 py-2 cursor-pointer">
+              <input type="checkbox" value="Morning" class="hidden time-checkbox" />
+              Morning
+            </label>
+
+            <label class="time-label border rounded-lg px-4 py-2 cursor-pointer">
+              <input type="checkbox" value="Afternoon" class="hidden time-checkbox" />
+              Afternoon
+            </label>
+
+            <label class="time-label border rounded-lg px-4 py-2 cursor-pointer">
+              <input type="checkbox" value="Evening" class="hidden time-checkbox" />
+              Evening
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Radio Button Group -->
+        <div>
+          <label class="block text-lg font-medium mb-3">
+            Learning Mode
+          </label>
+
+          <div class="flex gap-4">
+
+            <label class="mode-label border rounded-lg px-4 py-2 cursor-pointer">
+              <input type="radio" name="mode" value="Online" class="hidden mode-radio" />
+              Online
+            </label>
+
+            <label class="mode-label border rounded-lg px-4 py-2 cursor-pointer">
+              <input type="radio" name="mode" value="Offline" class="hidden mode-radio" />
+              Offline
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-lg"
+        >
+          Submit
+        </button>
+
+      </form>
+    </section>
+
+    <!-- Output Section -->
+    <section
+      id="outputBox"
+      class="hidden bg-white shadow-lg rounded-xl p-6 mt-6 border-l-4 border-blue-600"
+    >
+      <h2 class="text-2xl font-bold text-blue-600 mb-4">
+        Submitted Information
+      </h2>
+
+      <div id="outputContent" class="space-y-2 text-gray-700"></div>
+    </section>
+
+  </main>
+
+  <script>
+    // Highlight selected checkboxes
+    const checkboxLabels = document.querySelectorAll(".time-label");
+
+    checkboxLabels.forEach(label => {
+      label.addEventListener("click", () => {
+        label.classList.toggle("selected-option");
+      });
+    });
+
+    // Highlight selected radio buttons
+    const radioLabels = document.querySelectorAll(".mode-label");
+
+    radioLabels.forEach(label => {
+      label.addEventListener("click", () => {
+
+        radioLabels.forEach(l => l.classList.remove("selected-option"));
+
+        label.classList.add("selected-option");
+      });
+    });
+
+    // Form Submit
+    const form = document.querySelector("#courseForm");
+
+    form.addEventListener("submit", function(event) {
+
+      // Prevent default behavior
+      event.preventDefault();
+
+      // Retrieve values using querySelector
+      const fullName = document.querySelector("#fullName").value;
+      const email = document.querySelector("#email").value;
+      const course = document.querySelector("#course").value;
+
+      // Retrieve checkbox values using querySelectorAll
+      const selectedTimes = [];
+
+      document.querySelectorAll(".time-checkbox:checked")
+        .forEach(checkbox => {
+          selectedTimes.push(checkbox.value);
+        });
+
+      // Retrieve selected radio value
+      const selectedMode =
+        document.querySelector(".mode-radio:checked")?.value || "Not Selected";
+
+      // Display Output
+      const outputBox = document.querySelector("#outputBox");
+      const outputContent = document.querySelector("#outputContent");
+
+      outputBox.classList.remove("hidden");
+
+      outputContent.innerHTML = `
+        <p><strong>Full Name:</strong> ${fullName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Course:</strong> ${course}</p>
+        <p><strong>Preferred Study Time:</strong> ${selectedTimes.join(", ")}</p>
+        <p><strong>Learning Mode:</strong> ${selectedMode}</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
